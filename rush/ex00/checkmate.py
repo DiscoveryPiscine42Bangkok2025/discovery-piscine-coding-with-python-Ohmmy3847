@@ -25,7 +25,7 @@ def rook_attack_zone(rook_pos, arr):
             r, c = x + dx, y + dy
             while 0 <= r < arr.shape[0] and 0 <= c < arr.shape[1]:
                 zone.append((r, c))
-                if arr[r, c] != '.':  # stop condition
+                if arr[r, c] != '.':  # เจอหมากก็หยุด
                     break
                 r, c = r + dx, c + dy
     return zone
@@ -92,7 +92,7 @@ def checkmate(board):
     queen_pos = np.argwhere(arr == 'Q')
     
     # ตรวจสอบว่ามี King หรือไม่
-    if len(king_pos) != 1:
+    if len(king_pos) == 0:
         return print("Fail")
     
     # Find attack zones of all pieces
