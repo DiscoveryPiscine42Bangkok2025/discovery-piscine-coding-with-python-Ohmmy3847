@@ -93,7 +93,7 @@ def checkmate(board):
     
     # ตรวจสอบว่ามี King หรือไม่
     if len(king_pos) == 0:
-        return print("Fail")
+        return print("Error")
     
     # Find attack zones of all pieces
     all_attack_zones = []
