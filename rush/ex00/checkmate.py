@@ -18,28 +18,18 @@ def rook_attack_zone(rook_pos, arr):
     zone = []
     for i in rook_pos:
         x, y = i
-        # เดินแนวตั้ง-แนวนอน
-        # ขึ้น
-        for r in range(x-1, -1, -1):
-            zone.append((r, y))
-            if arr[r, y] != '.':  # หยุดเมื่อเจอหมาก
-                break
-        # ลง
-        for r in range(x+1, arr.shape[0]):
-            zone.append((r, y))
-            if arr[r, y] != '.':
-                break
-        # ซ้าย
-        for c in range(y-1, -1, -1):
-            zone.append((x, c))
-            if arr[x, c] != '.':
-                break
-        # ขวา
-        for c in range(y+1, arr.shape[1]):
-            zone.append((x, c))
-            if arr[x, c] != '.':
-                break
+        # 4 ทิศทางตรง
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+        
+        for dx, dy in directions:
+            r, c = x + dx, y + dy
+            while 0 <= r < arr.shape[0] and 0 <= c < arr.shape[1]:
+                zone.append((r, c))
+                if arr[r, c] != '.':  # stop condition
+                    break
+                r, c = r + dx, c + dy
     return zone
+
 
 def bishop_attack_zone(bishop_pos, arr):
     """bishop_attack_zone"""
