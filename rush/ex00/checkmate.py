@@ -71,12 +71,12 @@ def checkmate(board):
     try:
         arr = np.array([[j for j in i] for i in board.split("\n")])
     except:
-        return print("Fail")
+        return print("Error")
     size = arr.shape
     
     # ตรวจสอบว่า board เป็นสี่เหลี่ยมหรือไม่
     if not all(len(row) == len(arr) for row in arr):
-        return print("Fail")
+        return print("Error")
 
     flatten_arr = arr.flatten()
 
