@@ -78,12 +78,15 @@ def queen_attack_zone(queen_pos, arr):
 
 def checkmate(board):
     """ตรวจสอบว่า King ถูก check หรือไม่"""
-    arr = np.array([[j for j in i] for i in board.split("\n")])
+    try:
+        arr = np.array([[j for j in i] for i in board.split("\n")])
+    except:
+        return print("Error")
     size = arr.shape
     
     # ตรวจสอบว่า board เป็นสี่เหลี่ยมหรือไม่
     if not all(len(row) == len(arr) for row in arr):
-        return print("Fail")
+        return print("Error")
 
     flatten_arr = arr.flatten()
 
@@ -124,7 +127,7 @@ def checkmate(board):
     # ตำแหน่ง King
     king_row, king_col = king_pos[0][0], king_pos[0][1]
     king_position = (king_row, king_col)
-
+    
 
     # Check if king is in attack zone
     if king_position in all_attack_zones:
