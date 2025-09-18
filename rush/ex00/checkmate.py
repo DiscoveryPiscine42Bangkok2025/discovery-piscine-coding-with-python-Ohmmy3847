@@ -92,7 +92,7 @@ def checkmate(board):
     queen_pos = np.argwhere(arr == 'Q')
     
     # ตรวจสอบว่ามี King หรือไม่
-    if len(king_pos) == 0:
+    if len(king_pos) != 1:
         return print("Fail")
     
     # Find attack zones of all pieces
